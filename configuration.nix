@@ -72,6 +72,8 @@
 		shell = pkgs.nushell;
 		packages = with pkgs; [
 			kdePackages.kate
+			vlc
+			gimp
 		];
 	};
 
