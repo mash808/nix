@@ -103,6 +103,9 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # start OpenSSH agent at login
+  programs.ssh.startAgent = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
