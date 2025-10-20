@@ -74,12 +74,15 @@
 			kdePackages.kate
 			vlc
 			gimp
+			steam
+			discord
 		];
 	};
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	programs.firefox.enable = true;
+	programs.steam.enable = true;
 
 	programs.ssh.startAgent = true;
 
