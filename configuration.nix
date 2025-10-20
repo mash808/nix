@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+		./cachix.nix
     ];
 
   # Bootloader.
@@ -94,6 +95,8 @@
     shell = pkgs.nushell;
     packages = with pkgs; [
       kdePackages.kate
+		vlc
+		gimp
     #  thunderbird
     ];
   };
