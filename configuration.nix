@@ -54,6 +54,16 @@
 		variant = "";
 	};
 
+	# fix the hardware graphics acceleration situation with nvidia + wayland (hopefully)
+	hardware.nvidia.open = true;
+	hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+	hardware.graphics = {
+		enable = true;
+		enable32Bit = true;
+	};
+	services.xserver.videoDrivers = [ "nvidia" ];
+	hardware.nvidia.modesetting.enable = true; # force nvidia driver to work under Wayland compositors
+
 	services.printing.enable = true;
 
 	services.pulseaudio.enable = false;
@@ -83,6 +93,8 @@
 
 	programs.firefox.enable = true;
 	programs.steam.enable = true;
+	programs.steam.gamescopeSession.enable = true;
+	programs.gamemode.enable = true;
 
 	programs.ssh.startAgent = true;
 
@@ -99,7 +111,13 @@
 			nushell
 			fastfetch
 			ghostty
+			pciutils
+			mpv
 			easyeffects
+			mangohud
+			protonup-qt
+			lutris
+			bottles
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
@@ -109,8 +127,8 @@
 	programs.bash.interactiveShellInit = ''
 		if ! [ "$TERM" = "dumb" ]; then
 			exec nu
-				fi
-				'';
+		fi
+	'';
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
