@@ -13,7 +13,7 @@
 
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
-
+	
 	# disable all sleep/suspend states
 	systemd.sleep.extraConfig = ''
 		AllowSuspend=no
@@ -56,13 +56,27 @@
 
 	# fix the hardware graphics acceleration situation with nvidia + wayland (hopefully)
 	hardware.nvidia.open = true;
+	boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" "nvidia_uvm" ];
 	hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+
 	hardware.graphics = {
 		enable = true;
 		enable32Bit = true;
+		extraPackages = with pkgs; [
+			nvidia-vaapi-driver
+			libva-vdpau-driver
+			libvdpau-va-gl
+		];
 	};
+
+	environment.variables = {
+		NVD_BACKEND = "direct";
+		LIBVA_DRIVER_NAME = "nvidia";
+	};
+
 	services.xserver.videoDrivers = [ "nvidia" ];
 	hardware.nvidia.modesetting.enable = true; # force nvidia driver to work under Wayland compositors
+	hardware.nvidia.nvidiaSettings = true;
 
 	services.printing.enable = true;
 
@@ -95,6 +109,10 @@
 	programs.steam.enable = true;
 	programs.steam.gamescopeSession.enable = true;
 	programs.gamemode.enable = true;
+	programs.obs-studio = {
+		enable = true;
+		package = pkgs.obs-studio.override { cudaSupport = true; };
+	};
 
 	programs.ssh.startAgent = true;
 
@@ -109,8 +127,11 @@
 			curl
 			git
 			nushell
+			libva-utils
+			nv-codec-headers-12
 			fastfetch
 			ghostty
+			kitty
 			pciutils
 			mpv
 			easyeffects
