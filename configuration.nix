@@ -6,10 +6,12 @@
 
 {
 	imports =
-		[
-			./hardware-configuration.nix
-			./cachix.nix
-		];
+	[
+		./hardware-configuration.nix
+		./cachix.nix
+	];
+
+	system.autoUpgrade.enable = true;
 
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
