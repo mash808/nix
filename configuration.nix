@@ -72,6 +72,7 @@
 	environment.variables = {
 		NVD_BACKEND = "direct";
 		LIBVA_DRIVER_NAME = "nvidia";
+		NIXOS_OZONE_WL = "1"; # hint electron apps to use wayland
 	};
 
 	services.xserver.videoDrivers = [ "nvidia" ];
