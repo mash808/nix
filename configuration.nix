@@ -123,6 +123,7 @@
 	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
+			lua51Packages.lua
 			luarocks
 			ripgrep
 			neovim
