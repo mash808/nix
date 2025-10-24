@@ -109,6 +109,7 @@
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	programs.nix-ld.enable = true;
+	programs.direnv.enable = true;
 	programs.firefox.enable = true;
 	programs.steam.enable = true;
 	programs.steam.gamescopeSession.enable = true;
