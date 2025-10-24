@@ -123,6 +123,7 @@
 
 	environment.systemPackages = with pkgs; [
 			luarocks
+			ripgrep
 			neovim
 			wget
 			openssl
