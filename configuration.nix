@@ -106,6 +106,7 @@
 			vlc
 			gimp
 			steam
+			sunshine
 			discord
 		];
 	};
@@ -132,6 +133,11 @@
 	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
+			fira-code
+			fira-code-symbols
+			mplus-outline-fonts.githubRelease
+			dina-font
+			proggyfonts
 			waybar
 			wofi
 			rofi
