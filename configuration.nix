@@ -74,12 +74,16 @@
 	environment.variables = {
 		NVD_BACKEND = "direct";
 		LIBVA_DRIVER_NAME = "nvidia";
+		WLR_NO_HARDWARE_CURSORS = "1"; # if cursor becomes invisible
 		NIXOS_OZONE_WL = "1"; # hint electron apps to use wayland
 	};
 
 	services.xserver.videoDrivers = [ "nvidia" ];
 	hardware.nvidia.modesetting.enable = true; # force nvidia driver to work under Wayland compositors
 	hardware.nvidia.nvidiaSettings = true;
+
+	xdg.portal.enable = true;
+	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 	services.printing.enable = true;
 
@@ -108,6 +112,10 @@
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+	programs.hyprland = {
+		enable = true;
+		xwayland.enable = true;
+	};
 	programs.nix-ld.enable = true;
 	programs.direnv.enable = true;
 	programs.firefox.enable = true;
@@ -124,6 +132,12 @@
 	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
+			waybar
+			wofi
+			rofi
+			libnotify
+			dunst
+			swww
 			lua51Packages.lua
 			luarocks
 			ripgrep
