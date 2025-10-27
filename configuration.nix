@@ -13,8 +13,11 @@
 
 	system.autoUpgrade.enable = true;
 
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
+	boot.loader = {
+		systemd-boot.enable = true;
+		efi.canTouchEfiVariables = true;
+		timeout = 1; # 1s timeout for switching generations
+	};
 	
 	# disable all sleep/suspend states
 	systemd.sleep.extraConfig = ''
@@ -54,6 +57,17 @@
 	services.xserver.xkb = {
 		layout = "au";
 		variant = "";
+	};
+
+	# game streaming
+	services.sunshine = {
+		enable = true;
+		capSysAdmin = true;
+	};
+	# allow sunshine ports through firewall
+	networking.firewall = {
+		allowedTCPPorts = [ 47984 47989 47990 48010 ];
+		allowedUDPPorts = [ 47998 47999 48000 48002 48010 ];
 	};
 
 	# fix the hardware graphics acceleration situation with nvidia + wayland (hopefully)
@@ -133,6 +147,7 @@
 	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
+			nerd-fonts.jetbrains-mono
 			fira-code
 			fira-code-symbols
 			mplus-outline-fonts.githubRelease
