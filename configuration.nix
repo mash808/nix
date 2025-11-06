@@ -182,6 +182,7 @@
 			protonup-qt
 			lutris
 			bottles
+			lazygit
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
