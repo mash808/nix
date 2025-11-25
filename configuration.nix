@@ -173,6 +173,7 @@
 			libva-utils
 			nv-codec-headers-12
 			fastfetch
+			gohufont
 			ghostty
 			kitty
 			pciutils
@@ -183,6 +184,7 @@
 			lutris
 			bottles
 			lazygit
+			prismlauncher
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
