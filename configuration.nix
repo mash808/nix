@@ -184,6 +184,7 @@
 			lutris
 			bottles
 			lazygit
+			vscode
 			prismlauncher
 	];
 
