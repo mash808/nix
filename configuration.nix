@@ -185,6 +185,7 @@
 			bottles
 			lazygit
 			vscode
+			zed-editor
 			prismlauncher
 	];
 
