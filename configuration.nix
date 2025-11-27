@@ -184,6 +184,7 @@
 			lutris
 			bottles
 			lazygit
+			uv
 			vscode
 			zed-editor
 			prismlauncher
