@@ -59,7 +59,8 @@
 		variant = "";
 	};
 
-	services.tailscale.enable = true;
+	# get from packages instead, this default version has a security vulnerability
+	services.tailscale.enable = false;
 
 	# game streaming
 	services.sunshine = {
@@ -124,6 +125,7 @@
 			steam
 			sunshine
 			discord
+			tailscale
 		];
 	};
 
