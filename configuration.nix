@@ -59,6 +59,8 @@
 		variant = "";
 	};
 
+	services.tailscale.enable = true;
+
 	# game streaming
 	services.sunshine = {
 		enable = true;
