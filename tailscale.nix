@@ -1,16 +1,17 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
+let
+	# fetch a newer nixpkgs that has the updated tailscale
+	latestPkgs = import (pkgs.fetchFromGitHub {
+		owner = "NixOS";
+		repo = "nixpkgs";
+		rev = "13cf9b94f25031451505a17b84fcbb15c6622890";
+		hash = "sha256-dl/9o7iOLdjxheu8rNPuY+Y4ObILFyg+f+kMqE+7Ngg=";
+	}) { inherit (pkgs) system; };
+in
 {
 	services.tailscale = {
 		enable = true;
-		package = pkgs.tailscale.overrideAttrs (old: rec {
-			version = "1.90.9";
-			src = pkgs.fetchFromGitHub {
-				owner = "tailscale";
-				repo = "tailscale";
-				rev = "v${version}";
-				hash = lib.fakeSha256; # replace with actual hash
-			};
-		});
+		package = latestPkgs.tailscale; 
 	};
 }
