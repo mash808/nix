@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 	imports =
 	[
 		./hardware-configuration.nix
 		./cachix.nix
+		./tailscale.nix
 	];
 
 	system.autoUpgrade.enable = true;
@@ -18,7 +19,7 @@
 		efi.canTouchEfiVariables = true;
 		timeout = 1; # 1s timeout for switching generations
 	};
-	
+#	
 	# disable all sleep/suspend states
 	systemd.sleep.extraConfig = ''
 		AllowSuspend=no
@@ -58,9 +59,6 @@
 		layout = "au";
 		variant = "";
 	};
-
-	# get from packages instead, this default version has a security vulnerability
-	services.tailscale.enable = false;
 
 	# game streaming
 	services.sunshine = {
@@ -125,7 +123,6 @@
 			steam
 			sunshine
 			discord
-			tailscale
 		];
 	};
 
@@ -191,7 +188,7 @@
 			uv
 			vscode
 			zed-editor
-			prismlauncher
+			prismlauncher # minecraft
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
