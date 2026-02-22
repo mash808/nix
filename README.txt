@@ -1,0 +1,1 @@
+will prob switch to a home manager setup when this starts to feel a bit larger or i start to use on more devices. works well for my needs: dev, gaming, general use. can use "age" for secrets etc if i start adding keys for different things like SSH.
