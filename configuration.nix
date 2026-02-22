@@ -64,6 +64,7 @@
 	services.sunshine = {
 		enable = true;
 		capSysAdmin = true;
+		autoStart = false; # do not launch @ startup
 	};
 	# allow sunshine ports through firewall
 	networking.firewall = {
