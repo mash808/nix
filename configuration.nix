@@ -195,7 +195,6 @@
 			obsidian
 			spotify
 			opencode
-			llmfit # find what runs on your hardware
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
