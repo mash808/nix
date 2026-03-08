@@ -72,6 +72,12 @@
 		allowedUDPPorts = [ 47998 47999 48000 48002 48010 ];
 	};
 
+	# enable ollama for local llm inference
+	services.ollama = {
+		enable = true;
+		acceleration = "cuda";
+	};
+
 	# fix the hardware graphics acceleration situation with nvidia + wayland (hopefully)
 	hardware.nvidia.open = true;
 	boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_drm" "nvidia_uvm" ];
