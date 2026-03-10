@@ -9,7 +9,6 @@
 	[
 		./hardware-configuration.nix
 		./cachix.nix
-		./tailscale.nix
 	];
 
 	system.autoUpgrade.enable = true;
@@ -58,6 +57,18 @@
 	services.xserver.xkb = {
 		layout = "au";
 		variant = "";
+	};
+
+	services.tailscale = {
+		enable = true;
+		# do not bypass firewall for all incoming traffic on interface
+		extraSetFlags = [
+			"--netfilter-mode=nodivert"
+		];
+		# disable logging and telemetry
+		extraDaemonFlags = [
+			"--no-logs-no-support"
+		];
 	};
 
 	# game streaming
