@@ -21,12 +21,12 @@
 	};
 #	
 	# disable all sleep/suspend states
-	systemd.sleep.extraConfig = ''
-		AllowSuspend=no
-		AllowHibernation=no
-		AllowSuspendThenHibernate=no
-		AllowHybridSleep=no
-	'';
+	systemd.sleep.settings.Sleep = { 
+		AllowSuspend = false;
+		AllowHibernation = false;
+		AllowSuspendThenHibernate = false;
+		AllowHybridSleep = false;
+	};
 
 	systemd.targets.sleep.enable = false;
 	systemd.targets.suspend.enable = false;
