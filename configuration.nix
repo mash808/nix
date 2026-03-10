@@ -75,7 +75,7 @@
 	# enable ollama for local llm inference
 	services.ollama = {
 		enable = true;
-		acceleration = "cuda";
+		package = pkgs.ollama-cuda; # enable cuda hardware acceleration
 	};
 
 	# fix the hardware graphics acceleration situation with nvidia + wayland (hopefully)
