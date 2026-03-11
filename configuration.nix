@@ -59,6 +59,8 @@
 		variant = "";
 	};
 
+	fonts.packages = with pkgs; [ gohufont ];
+
 	services.tailscale = {
 		enable = true;
 		# do not bypass firewall for all incoming traffic on interface
