@@ -217,6 +217,7 @@
 			bat
 			tmux
 			tailscale-systray
+			gopls # go language server
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
