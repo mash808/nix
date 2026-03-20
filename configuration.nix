@@ -221,6 +221,7 @@
 			tree-sitter # tree-sitter parser gen tool
 			libgcc # runtime
 			gcc # compiler
+			opencode-desktop
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
