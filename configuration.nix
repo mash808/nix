@@ -219,7 +219,8 @@
 			tailscale-systray
 			gopls # go language server
 			tree-sitter # tree-sitter parser gen tool
-			libgcc
+			libgcc # runtime
+			gcc # compiler
 	];
 
 	# nushell is not POSIX compliant, so launch it from bash instead of setting as login shell
